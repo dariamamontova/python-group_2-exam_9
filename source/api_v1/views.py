@@ -22,7 +22,7 @@ class CategoryViewSet(BaseViewSet):
     serializer_class = CategorySerializer
 
 class ProductViewSet(BaseViewSet):
-    queryset = Product.objects.all().order_by('name')
+    queryset = Product.objects.all().order_by('-date')
     serializer_class = ProductSerializer
 
 class OrderViewSet(BaseViewSet):
