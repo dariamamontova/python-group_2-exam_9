@@ -14,7 +14,7 @@ class Menu extends Component {
     };
 
     render() {
-        // const {username, is_admin, user_id} = this.props.auth;
+        const {username, is_admin, user_id} = this.props.auth;
         return <Fragment>
             <button onClick={this.toggle}
                     className="navbar-toggler"
@@ -27,19 +27,16 @@ class Menu extends Component {
             <div className={(this.state.collapse ? "collapse" : "") + " navbar-collapse"}
                  id="navbarNav">
                 <ul className="navbar-nav">
-                    {/*<MenuItem to="/">Фильмы</MenuItem>*/}
+                    <MenuItem to="/">Товары</MenuItem>
                     {/*{is_admin ? <MenuItem to="/movies/add">Добавить фильм</MenuItem> : null}*/}
-                    {/*<MenuItem to="/halls/">Залы</MenuItem>*/}
-                    {/*{is_admin ? <MenuItem to="/halls/add">Добавить зал</MenuItem> : null}*/}
                 </ul>
                 <ul className="navbar-nav ml-auto">
-                    {/*{user_id ? [*/}
-                        {/*<MenuItem to={"/users/" + user_id} key="username"><span className="navbar-text">Привет, {username}!</span></MenuItem>,*/}
-                        {/*<MenuItem to="/logout" key="logout">Выйти</MenuItem>*/}
-                    {/*] : [*/}
-                        {/*<MenuItem to="/login" key="login">Войти</MenuItem>,*/}
-                        {/*<MenuItem to="/register" key="register">Зарегистрироваться</MenuItem>*/}
-                    {/*]}*/}
+                    {user_id ? [
+                        <li><span className="navbar-text">Привет, {username}!</span></li>,
+                        <MenuItem to="/logout" key="logout">Выйти</MenuItem>
+                    ] : [
+                        <MenuItem to="/login" key="login">Войти</MenuItem>,
+                    ]}
                 </ul>
             </div>
         </Fragment>
