@@ -4,15 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
-// import {BASE_URL} from "./api-urls";
+import {BASE_URL} from "./api-urls";
 import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './store/reducers/root'
 import {Provider} from 'react-redux'
 import thunkMiddleware from 'redux-thunk';
 
-// axios.defaults.baseURL = BASE_URL;
+axios.defaults.baseURL = BASE_URL;
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 

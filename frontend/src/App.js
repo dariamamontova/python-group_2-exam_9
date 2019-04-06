@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router';
 import './App.css';
 import {connect} from "react-redux";
 import Layout from "./components/Layout/Layout"
+import ProductList from "./containers/ProductList/ProductList"
 
 class App extends Component {
     render() {
@@ -11,19 +12,7 @@ class App extends Component {
             <BrowserRouter>
                     <Layout>
                         <Switch>
-                            {/*<AuthRoute path="/users/:id" component={UserDetail}/>*/}
-                            {/*<Route path="/login" component={Login}/>*/}
-                            {/*<Route path="/logout" component={Logout}/>*/}
-                            {/*<Route path="/register" component={Register}/>*/}
-                            {/*<AuthRoute path="/halls/add" component={HallAdd}/>*/}
-                            {/*<AuthRoute path="/halls/:id/edit" component={HallEdit}/>*/}
-                            {/*<Route path="/halls/:id" component={HallDetail}/>*/}
-                            {/*<Route path="/halls/" component={HallList}/>*/}
-                            {/*<AuthRoute  path="/movies/add" component={MovieAdd}/>*/}
-                            {/*<AuthRoute path="/movies/:id/edit" component={MovieEdit}/>*/}
-                            {/*<Route path="/movies/:id" component={MovieDetail}/>*/}
-                            {/*<Route path="/" component={MovieList}/>*/}
-
+                            <Route path="/" component={ProductList}/>
                         </Switch>
                     </Layout>
                 </BrowserRouter>

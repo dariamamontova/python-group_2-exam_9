@@ -1,25 +1,39 @@
 import React, {Fragment, Component} from 'react'
 import ProductCard from "../../components/ProductCard/ProductCard"
 import {connect} from "react-redux";
+import {loadProducts} from "../../store/actions/product-list";
+import {PRODUCTS_URL} from "../../api-urls";
+import axios from 'axios';
 
 
 class ProductList extends Component {
-    componentDidMount() {
 
+    componentDidMount() {
+        this.props.loadProducts();
     }
 
 
     render() {
         return <Fragment>
             <div className='row'>
-                {this.props.productList.products.map(movie => {
-                    return <div className='col-xs-12 col-sm-6 col-lg-4 mt-3'  key={product.id}>
-                        <MovieCard product={product}/>
+                {this.props.productList.products.map(product => {
+                    return <div className='col-xs-12 col-sm-6 col-lg-4 mt-3' key={product.id}>
+                        <ProductCard product={product}/>
                     </div>
                 })}
             </div>
         </Fragment>
     }
+
 }
 
-export default ProductList
+const mapStateToProps = (state) => ({
+        productList: state.productList
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    loadProducts: () => dispatch(loadProducts())
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
