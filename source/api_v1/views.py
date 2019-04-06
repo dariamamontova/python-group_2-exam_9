@@ -17,7 +17,17 @@ class BaseViewSet(viewsets.ModelViewSet):
             permissions.append(IsAdminUser())
         return permissions
 
+class CategoryViewSet(BaseViewSet):
+    queryset = Category.objects.all().order_by('name')
+    serializer_class = CategorySerializer
 
+class ProductViewSet(BaseViewSet):
+    queryset = Product.objects.all().order_by('name')
+    serializer_class = ProductSerializer
+
+class OrderViewSet(BaseViewSet):
+    queryset = Order.objects.all().order_by('-created_at')
+    serializer_class = OrderSerializer
 
 class LoginView(ObtainAuthToken):
 
