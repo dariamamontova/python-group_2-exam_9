@@ -25,5 +25,9 @@ class Product(models.Model):
     class Meta:
         verbose_name_plural = 'Products'
 
+class Photo(models.Model):
+    product = models.ForeignKey(Product, related_name='photos', on_delete=models.PROTECT)
+    photo = models.ImageField(upload_to='photos')
+
 
 
