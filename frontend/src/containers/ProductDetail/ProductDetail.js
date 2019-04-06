@@ -1,10 +1,8 @@
 import React, {Component, Fragment} from 'react'
-import {NavLink} from "react-router-dom";
 import connect from "react-redux/es/connect/connect";
 import ProductCategories from "../../components/ProductCategories/ProductCategories"
 import {loadProduct, loadCategories} from "../../store/actions/product-detail";
-import ProductCard from "../../components/ProductCard/ProductCard";
-
+import {addProduct} from "../../store/actions/basket"
 
 class ProductDetail extends Component {
 
@@ -24,11 +22,13 @@ class ProductDetail extends Component {
             {categories.length > 0 ? <ProductCategories categories={categories}/> : null}
             <div className='row'>
                 {photos.map(photo => {
-                    return <div className='col-xs-12 col-sm-3 col-lg-4 mt-3 w-50' key={photo.id}>
-                        <img src={photo.photo} alt=""/>
+                    return <div className='w-25 m-3 ' key={photo.id}>
+                        <img className="w-100" src={photo.photo} alt=""/>
                     </div>
                 })}
             </div>
+            <button onClick={() => this.props.addProduct(id)}>Добавить в корзину</button>
+            <button>Оформить заказ</button>
 
         </div>;
     }
@@ -40,7 +40,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-    loadProduct: (id) => dispatch(loadProduct(id))
+    loadProduct: (id) => dispatch(loadProduct(id)),
+    addProduct: (id) => dispatch(addProduct(id))
 });
 
 

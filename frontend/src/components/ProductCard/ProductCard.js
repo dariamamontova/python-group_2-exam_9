@@ -4,7 +4,8 @@ import Card from "../UI/Card/Card";
 const ProductCard = props => {
     const {product} = props;
 
-    const {name, photo, id} = product;
+    const {name, id} = product;
+    const {photo} = product.photos
 
     const link = {
         text: 'Read more',

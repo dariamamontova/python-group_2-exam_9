@@ -3,7 +3,9 @@ import {NavLink} from 'react-router-dom'
 
 const Card = props => {
     return <div className={"card mt-3 text-center text-sm-left " + (props.className ? props.className : "")}>
-        {props.image ? <img className="card-img-top" src={props.image}/> : null}
+        {props.image ? <img className="card-img-top" src={props.image}/> :
+            <img className="card-img-top" src="http://localhost:8000/uploads/photos/750x485.jpeg"/>
+        }
         {props.header || props.text || props.link ? <div className="card-body">
             {props.header ? <h5 className="card-title">{props.header}</h5> : null}
             {props.text ? <p className="card-text">{props.text}</p> : null}
