@@ -2,16 +2,12 @@ import React, {Fragment, Component} from 'react'
 import ProductCard from "../../components/ProductCard/ProductCard"
 import {connect} from "react-redux";
 import {loadProducts} from "../../store/actions/product-list";
-import {PRODUCTS_URL} from "../../api-urls";
-import axios from 'axios';
-
 
 class ProductList extends Component {
 
     componentDidMount() {
         this.props.loadProducts();
     }
-
 
     render() {
         return <Fragment>

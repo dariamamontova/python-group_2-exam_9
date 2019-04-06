@@ -4,7 +4,7 @@ import Menu from "./Menu/Menu";
 
 
 const Navbar = () => (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Logo/>
         <Menu/>
     </nav>
