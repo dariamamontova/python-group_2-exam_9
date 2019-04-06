@@ -29,5 +29,15 @@ class Photo(models.Model):
     product = models.ForeignKey(Product, related_name='photos', on_delete=models.PROTECT)
     photo = models.ImageField(upload_to='photos')
 
+class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, related_name='order')
+    phone = models.CharField(max_length=150)
+    address = models.CharField(max_length=150, blank=True, null=True)
+    comment = models.TextField(max_length=2000, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%s, %s" % (self.user, self.products)
 
 
