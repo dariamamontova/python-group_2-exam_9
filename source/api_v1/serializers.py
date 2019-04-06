@@ -19,6 +19,26 @@ class InlineCategorySerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
+class InlinePhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photo
+        fields = ('id', 'photo')
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name='api_v1:product-detail')
+    categories = InlineCategorySerializer(many=True, read_only=True)
+    photos = InlinePhotoSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Product
+        fields = ('url', 'id', 'name', 'description', 'date', 'categories', 'price', 'photos')
+
+class InlineProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('id', 'name')
+
 
 
 
