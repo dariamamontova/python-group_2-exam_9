@@ -1,14 +1,15 @@
 import React, {Fragment, Component} from 'react'
-import {loadProduct} from "../../store/actions/product-detail";
 import connect from "react-redux/es/connect/connect";
 
 class Basket extends Component {
+
     render() {
+        console.log('...', this.props);
         return <Fragment>
             <div className='row'>
-                {this.props.basket.products.map(product => {
-                    return <div className='col-xs-12 col-sm-6 col-lg-4 mt-3' key={product.id}>
-                        <div>{product.name}</div>
+                {this.props.products.map(product => {
+                    return <div className='mt-3' key={product.id}>
+                        <p>{product.name}</p>
                     </div>
                 })}
             </div>
@@ -16,12 +17,10 @@ class Basket extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-        basket: state.basket
-});
+const mapStateToProps = (state) => state.basket;
 
-const mapDispatchToProps = (dispatch) => ({
-    loadProduct: (id) => dispatch(loadProduct(id))
+
+const mapDispatchToProps = () => ({
 });
 
 
