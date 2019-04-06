@@ -1,11 +1,23 @@
-from rest_framework import viewsets, status
+from webapp.models import Order, Product, Photo, Category
+from api_v1.serializers import OrderSerializer, ProductSerializer, CategorySerializer
+from rest_framework import viewsets
 from api_v1.serializers import UserSerializer, AuthTokenSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from django.contrib.auth.models import User
-from rest_framework.generics import CreateAPIView
 from rest_framework.authtoken.views import ObtainAuthToken, APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+
+class BaseViewSet(viewsets.ModelViewSet):
+
+    def get_permissions(self):
+        permissions = super().get_permissions()
+        if self.request.method in ["POST", "DELETE", "PUT", "PATCH"]:
+            permissions.append(IsAuthenticated())
+            permissions.append(IsAdminUser())
+        return permissions
+
+
 
 class LoginView(ObtainAuthToken):
 
@@ -37,15 +49,6 @@ class TokenLoginView(APIView):
             'is_admin': user.is_superuser,
             'is_staff': user.is_staff
         })
-
-class BaseViewSet(viewsets.ModelViewSet):
-
-    def get_permissions(self):
-        permissions = super().get_permissions()
-        if self.request.method in ["POST", "DELETE", "PUT", "PATCH"]:
-            permissions.append(IsAuthenticated())
-            permissions.append(IsAdminUser())
-        return permissions
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
