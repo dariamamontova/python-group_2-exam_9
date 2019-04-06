@@ -28,6 +28,7 @@ class Menu extends Component {
                  id="navbarNav">
                 <ul className="navbar-nav">
                     <MenuItem to="/">Товары</MenuItem>
+                    <MenuItem to="/basket">Корзина</MenuItem>
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     {user_id ? [

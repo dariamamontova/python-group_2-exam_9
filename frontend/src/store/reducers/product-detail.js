@@ -7,7 +7,7 @@ const initialState = {
 const productDetailReducer = (state = initialState, action) => {
     switch (action.type) {
         case PRODUCT_DETAIL_REQUEST_SUCCESS:
-            return {...state, product: action.product};
+            return {...state, product: action.product, amount: 1};
         default:
             return state;
     }

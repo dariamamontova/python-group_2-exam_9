@@ -4,6 +4,7 @@ import productDetailReducer from "./product-detail"
 import loginReducer from "./login";
 import authReducer from "./auth";
 import tokenLoginReducer from "./app";
+import basketReducer from "./basket"
 
 const rootReducer = combineReducers({
     productList: productListReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     login: loginReducer,
     auth: authReducer,
     app: tokenLoginReducer,
+    basket: basketReducer
 
 });
 

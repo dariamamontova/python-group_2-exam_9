@@ -10,6 +10,7 @@ import Login from "./containers/Login/Login";
 import Logout from "./containers/Logout/Logout";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
 import {tokenLogin} from "./store/actions/token-login";
+import Basket from "./containers/Basket/Basket"
 
 class App extends Component {
 
@@ -22,6 +23,7 @@ class App extends Component {
             <BrowserRouter>
                     <Layout>
                         <Switch>
+                            <Route path="/basket" component={Basket}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/logout" component={Logout}/>
                             <Route path="/products/:id" component={ProductDetail}/>
