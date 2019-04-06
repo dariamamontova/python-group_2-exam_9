@@ -5,14 +5,19 @@ const ProductCard = props => {
     const {product} = props;
 
     const {name, id} = product;
-    const {photo} = product.photos
+    const array = product.photos;
+    const photo = array.length > 0 ? product.photos[0].photo : null
+
 
     const link = {
         text: 'Read more',
         url: '/products/' + id
     };
 
-    return <Card header={name} image={photo} link={link} className='h-100'/>;
+    return <Card header={name}
+                 image={photo}
+                 link={link}
+                 className='h-100'/>;
 };
 
 
